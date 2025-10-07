@@ -1,0 +1,29 @@
+﻿@model MVCcrudoperation.Models.LoginData
+
+@{
+    ViewBag.Title = "Login Page";
+}
+@using (@Html.BeginForm("Index","Login",FormMethod.Post))
+{ 
+ <h1>Login</h1>
+<table style = "border:1px solid black ; background-color : pink">
+    <tr style="text-align:center">
+        <td>Enter the UserID</td>
+        <td>@Html.TextBoxFor(m => m.id) </td>
+    </tr>
+    <tr style="text-align:center">
+        <td>Enter the UserName</td>
+        <td>@Html.TextBoxFor(m => m.username) </td>
+    </tr>
+    <tr style="text-align:center">
+        <td>
+            <input type="submit" value="Proceed"/>     
+        </td>
+    </tr>
+    <tr>
+        <td>@ViewBag.d2</td>
+    </tr>
+</table>
+}
+
+
