@@ -23,7 +23,7 @@ namespace MVCcrudoperation.Models
             {
                 string safeUser = d.username.Replace("'", "''");
                 con.Open();
-                cmd = new SqlCommand("insert into login values(" + d.id + ",'" + safeUser + "')", con);
+                cmd = new SqlCommand("insert into login values(" + d.id + ",'" + safeUser + "')", con);//Create Operation
                 cmd.ExecuteNonQuery();
                 con.Close();
                 return "Login success";
@@ -34,5 +34,27 @@ namespace MVCcrudoperation.Models
                 return "Error:" + ex.Message;
             }
         }
+        public string update(LoginData d)
+{
+    if (string.IsNullOrEmpty(d.username))
+    {
+        return "Username Required";
     }
+    try
+    {
+        string safeUser = d.username.Replace("'", "''");//Replace the Column Username to safeUser for 'Handle the Parameter error'
+        con.Open();
+        cmd = new SqlCommand("update login set username = '"+safeUser+"' where id = "+ d.id +"", con);//Update Operation
+        cmd.ExecuteNonQuery();
+        con.Close();
+        return "Update success";
+    }
+    catch (Exception ex)
+    {
+        con.Close();
+        return "Error:" + ex.Message;
+    }
+}
+    }
+
 }
