@@ -24,6 +24,16 @@ namespace MVCcrudoperation.Controllers
             return View();
 
         }
+         [HttpPost]
+      public ActionResult Update(LoginData d)//Passing parameter for function call (update function)
+     {
+     LoginData d2 = new LoginData();//Creating object for model class
+     ViewBag.d3 = d2.update(d);
+     return View("Index",d);//Passing the Index view page with 'd'
+
+     }
+
 
     }
+
 }
