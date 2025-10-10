@@ -3,6 +3,7 @@
 @{
     ViewBag.Title = "Login Page";
 }
+//Create Operation
 @using (@Html.BeginForm("Index","Login",FormMethod.Post))
 { 
  <h1>Login</h1>
@@ -25,6 +26,7 @@
     </tr>
 </table>
 }
+//Update Operation
 @using (@Html.BeginForm("Update", "Login", FormMethod.Post))
 {
     <h1>Update Form</h1>
@@ -47,6 +49,27 @@
         </tr>
     </table>
 }
+//Delete Operation
+@using (@Html.BeginForm("Delete", "Login", FormMethod.Post))
+{
+    <h1>Delete Form</h1>
+    <table style="border:1px solid black ; background-color : deepskyblue">
+        <tr style="text-align:center">
+            <td>Enter the UserID</td>
+            <td>@Html.TextBoxFor(m => m.id) </td>//For Deleting the Row from the 'login' table Only get 'ID' info from user.
+        </tr>
+        <tr style="text-align:center">
+            <td>
+                <input type="submit" value="Delete" />
+            </td>
+        </tr>
+        <tr>
+            <td>@ViewBag.d4</td>//Get the Details using Razor '@ViewBag'from the d4 object
+        </tr>
+    </table>
+}
+
+
 
 
 
