@@ -6,6 +6,7 @@ using System.Data.SqlClient;
 
 namespace MVCcrudoperation.Models
 {
+    //Create operation
     public class LoginData
     {
         SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-EHPCDIL\SQLEXPRESS02;Initial Catalog=nambu;Integrated Security=True");
@@ -34,8 +35,9 @@ namespace MVCcrudoperation.Models
                 return "Error:" + ex.Message;
             }
         }
+        //Update operation
         public string update(LoginData d)
-{
+   {
     if (string.IsNullOrEmpty(d.username))
     {
         return "Username Required";
@@ -55,6 +57,24 @@ namespace MVCcrudoperation.Models
         return "Error:" + ex.Message;
     }
 }
+        //Delete operation
+         public string delete(LoginData d)
+ {   
+     try
+     {
+         
+         con.Open();
+         cmd = new SqlCommand("delete from login  where id = " + d.id + "", con);
+         cmd.ExecuteNonQuery();
+         con.Close();
+         return "Delete success";
+     }
+     catch (Exception ex)
+     {
+         con.Close();
+         return "Error:" + ex.Message;
+     }
+ }
     }
-
 }
+
