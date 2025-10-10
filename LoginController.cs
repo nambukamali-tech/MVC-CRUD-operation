@@ -32,8 +32,14 @@ namespace MVCcrudoperation.Controllers
      return View("Index",d);//Passing the Index view page with 'd'
 
      }
+      [HttpPost]
+     public ActionResult Delete(LoginData d)//Passing parameter for function call (update function)
+ {
+     LoginData d1 = new LoginData();//Creating object for model class
+     ViewBag.d4 = d1.delete(d);
+     return View("Index", d);
 
-
+ }
     }
-
 }
+
